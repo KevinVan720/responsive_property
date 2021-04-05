@@ -1,3 +1,4 @@
 ## 0.0.1
 
-* TODO: Describe initial release.
+Initial release. The responsive feature originally from the animated_styled_widget package is now move
+to this package.
