@@ -51,9 +51,9 @@ Responsive<T> is the main class to use. It stores a map of Map<ScreenScope, T>. 
 
 ```dart
 var responsive = Responsive({
-  typicalMobileScreenScope: 2,
-  typicalTabletScreenScope: 4,
-  typicalDesktopScreenScope: 6
+  mobileScreenScope: 2,
+  tabletScreenScope: 4,
+  desktopScreenScope: 6
 });
 ```
 
@@ -94,9 +94,9 @@ This gives you a responsive GridView with different cross axis count. Mobile:2, 
 You can also directly build different widgets for different screen sizes.
 ```dart
 Responsive({
-    typicalMobileScreenScope: mobileWidget,
-    typicalTabletScreenScope: tabletWidget,
-    typicalDesktopScreenScope: desktopWidget,
+    mobileScreenScope: mobileWidget,
+    tabletScreenScope: tabletWidget,
+    desktopScreenScope: desktopWidget,
   }).resolve(context) ??
   desktopWidget;
 ```
