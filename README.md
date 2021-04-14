@@ -1,6 +1,6 @@
 # responsive_property
 
-Inspired by Flutter's MaterialProperty, gives you a responsive value based on the current screen dimension.
+Inspired by Flutter's MaterialStateProperty, gives you a responsive value based on the current screen dimension.
 
 When a built-in Material component (like a ElevatedButton) builds itself based on some internal states (hovered, pressed, selected), it will call resolve() on some MaterialProperty and get the appropriate value. This package uses a similar interface, but the states are now screen scopes.
 
@@ -119,5 +119,5 @@ ScreenBuilder.builder(
 
 The second one has access to the BuildContext.
 
-
+![responsive_widget](https://i.imgur.com/VyivaXL.gif)
 
