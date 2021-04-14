@@ -54,17 +54,16 @@ class _ResponsiveBuilderPageState extends State<ResponsiveBuilderPage> {
         ),
       ),
       body: Center(
-          child: Responsive({
-                typicalMobileScreenScope: _mobileBuilder,
-                typicalTabletScreenScope: _tabletBuilder,
-                typicalDesktopScreenScope: _desktopBuilder,
-              }).resolve(context) ??
-              Container()),
+          child: ScreenBuilder.builder(
+        mobileBuilder: _mobileBuilder,
+        tabletBuilder: _tabletBuilder,
+        desktopBuilder: _desktopBuilder,
+      )),
       // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 
-  Widget get _mobileBuilder {
+  Widget _mobileBuilder(BuildContext context) {
     return Column(
       children: [
         Expanded(
@@ -92,7 +91,7 @@ class _ResponsiveBuilderPageState extends State<ResponsiveBuilderPage> {
     );
   }
 
-  Widget get _tabletBuilder {
+  Widget _tabletBuilder(BuildContext context) {
     return ListView(
       children: _widgetOptions
           .map((e) => Container(
@@ -104,7 +103,7 @@ class _ResponsiveBuilderPageState extends State<ResponsiveBuilderPage> {
     );
   }
 
-  Widget get _desktopBuilder {
+  Widget _desktopBuilder(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: _widgetOptions,

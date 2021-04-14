@@ -1,6 +1,6 @@
 name: responsive_property
 description: Inspired by Flutter's MaterialProperty, gives you a responsive value based on the current screen dimension.
-version: 0.0.1
+version: 0.0.2
 homepage: https://github.com/KevinVan720/responsive_property
 
 environment:
