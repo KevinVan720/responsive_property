@@ -8,16 +8,42 @@ Most responsive packages is at the Widget level, but we can (and should) make an
 
 ## The ScreenScope class
 
-The ScreenScope is very similar to the BoxConstraint with minWidth, maxWidth, minHeight, and maxHeight. This defines the scope of the screen you want to target. It is named ScreenScope as there might be more properties we care about in addtion to the size of the screen in the future.
+The ScreenScope is very similar to the BoxConstraint with minWidth, maxWidth, minHeight, and maxHeight, plus orientation. This defines the scope of the screen you want to target. It is named ScreenScope as there might be more properties we care about in addtion to the size of the screen in the future.
 
-There are some predefined ScreenScopes that you can use:
+There are some predefined ScreenScopes that you can use. If you want to target three screen types, use:
 ```
-typicalMobileScreenScope (0px - 480px width)
-typicalTabletScreenScope (480px - 840px width)
-typicalDesktopScreenScope (840px - width)
+mobileScreenScope (0px - 480px width)
+tabletScreenScope (480px - 840px width)
+desktopScreenScope (840px -  width)
 ```
-But you can define ScreenScopes however you like. For example, a design based on orientation (aspect ratio).
+```
+mobilePortraitScreenScope (0px - 480px width, portrait)
+tabletPortraitScreenScope (480px - 840px width, portrait)
+desktopPortraitScreenScope (840px - width, portrait)
+```
+```
+mobileLandscapeScreenScope (0px - 840px width, landscape)
+tabletLandscapeScreenScope (840px - 1200px width, landscape)
+desktopLandscapeScreenScope (1200px - width, landscape)
+```
+Below is a simple demonstration of how the screen categorization works:
+![screen_scope](https://i.imgur.com/jbqQxxJ.png)
 
+If you want to target just two screen types, use:
+```
+smallScreenScope (0px - 600px width)
+bigScreenScope (600px -  width)
+```
+```
+smallPortraitScreenScope (0px - 600px width, portrait)
+bigPortraitScreenScope (600px - width, portrait)
+```
+```
+smallPortraitScreenScope (0px - 1000px width, landscape)
+bigPortraitScreenScope (1000px - width, landscape)
+```
+
+But you can define ScreenScopes however you like.
 
 ## The Responsive class
 
@@ -49,17 +75,19 @@ GridView.count(
   crossAxisSpacing: 10,
   mainAxisSpacing: 10,
   crossAxisCount: Responsive({
-    typicalMobileScreenScope: 2,
-    typicalTabletScreenScope: 4,
-    typicalDesktopScreenScope: 6
+    mobileScreenScope: 2,
+    tabletScreenScope: 4,
+    desktopScreenScope: 6
   }).resolve(context) ??
-  8,
+  6,
   children: List.generate(30,
     (index) => Container(color: Colors.green, child: Text("TAP ME"))),
   )
 ```
 
 This gives you a responsive GridView with different cross axis count. Mobile:2, tablet:4, desktop:6, and 8 for even wider screens.
+
+![responsive_int](https://i.imgur.com/2ULrZ7Z.gif)
 
 ## Responsive widget example
 

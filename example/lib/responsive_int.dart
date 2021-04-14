@@ -33,13 +33,15 @@ class _ResponsiveIntPageState extends State<ResponsiveIntPage> {
         crossAxisSpacing: 10,
         mainAxisSpacing: 10,
         crossAxisCount: Responsive({
-              typicalMobileScreenScope: 2,
-              typicalTabletScreenScope: 4,
-              typicalDesktopScreenScope: 6
+              mobileScreenScope: 2,
+              tabletScreenScope: 4,
+              desktopScreenScope: 6
             }).resolve(context) ??
             8,
-        children: List.generate(30,
-            (index) => Container(color: Colors.green, child: Text("TAP ME"))),
+        children: List.generate(
+            30,
+            (index) =>
+                Container(color: Colors.green, child: Text("TSOME TEXT"))),
       )),
       // This trailing comma makes auto-formatting nicer for build methods.
     );

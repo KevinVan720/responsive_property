@@ -1,31 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_class_parser/flutter_class_parser.dart';
 
-const double screenMaxDimension = 100000;
-
-const double mobileScreenWidthTypical = 360;
-const double tabletScreenWidthTypical = 600;
-const double desktopScreenWidthTypical = 1024.0;
-
-const double mobileScreenWidthLimit = 480.0;
-const double tabletScreenWidthLimit = 840.0;
-const double desktopScreenWidthLimit = 2000.0;
-
-const typicalMobileScreenScope = ScreenScope(maxWidth: mobileScreenWidthLimit);
-const typicalTabletScreenScope = ScreenScope(
-    minWidth: mobileScreenWidthLimit, maxWidth: tabletScreenWidthLimit);
-const typicalDesktopScreenScope = ScreenScope(minWidth: tabletScreenWidthLimit);
+const double screenMaxDimension = 999999;
 
 class ScreenScope {
   final double minWidth;
   final double maxWidth;
   final double minHeight;
   final double maxHeight;
+  final Orientation? orientation;
 
   const ScreenScope({
     this.minWidth = 0.0,
     this.maxWidth = screenMaxDimension,
     this.minHeight = 0.0,
     this.maxHeight = screenMaxDimension,
+    this.orientation,
   }) : assert(minWidth >= 0.0 &&
             minWidth <= maxWidth &&
             maxWidth <= screenMaxDimension &&
@@ -33,27 +23,13 @@ class ScreenScope {
             minHeight <= maxHeight &&
             maxHeight <= screenMaxDimension);
 
-  /*
-  static fromJson(Map<String, dynamic> map) {
-    double minWidth = map["minWidth"] ?? 0.0;
-    double maxWidth = map["maxWidth"] ?? screenMaxDimension;
-    double minHeight = map["minHeight"] ?? 0.0;
-    double maxHeight = map["maxHeight"] ?? screenMaxDimension;
-    return ScreenScope(
-      maxWidth: maxWidth,
-      minWidth: minWidth,
-      maxHeight: maxHeight,
-      minHeight: minHeight,
-    );
-  }
-  */
-
   Map<String, dynamic> toJson() {
     Map<String, dynamic> rst = {};
     rst["minWidth"] = minWidth;
     rst["maxWidth"] = maxWidth;
     rst["minHeight"] = minHeight;
     rst["maxHeight"] = maxHeight;
+    rst.updateNotNull("orientation", orientation?.toJson());
 
     return rst;
   }
@@ -66,6 +42,9 @@ class ScreenScope {
         maxHeight < size.height) {
       return false;
     }
+    if (orientation != null && data.orientation != orientation) {
+      return false;
+    }
     return true;
   }
 
@@ -75,7 +54,8 @@ class ScreenScope {
       if (this.minWidth == other.minWidth &&
           this.maxWidth == other.maxWidth &&
           this.minHeight == other.minHeight &&
-          this.maxHeight == other.maxHeight) {
+          this.maxHeight == other.maxHeight &&
+          this.orientation == other.orientation) {
         return true;
       }
     }
@@ -83,5 +63,6 @@ class ScreenScope {
   }
 
   @override
-  int get hashCode => hashValues(minWidth, maxWidth, minHeight, maxHeight);
+  int get hashCode =>
+      hashValues(minWidth, maxWidth, minHeight, maxHeight, orientation);
 }

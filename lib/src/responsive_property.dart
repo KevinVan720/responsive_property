@@ -6,14 +6,14 @@ import 'package:responsive_property/responsive_property.dart';
 ///A property that adapts to different screen sizes
 ///Get the value for the current screen by calling resolve and provide the build context.
 class Responsive<T> {
-  Map<ScreenScope, T>? values;
+  late Map<ScreenScope, T> values;
 
   Responsive(this.values);
 
   T? resolve(BuildContext context,
       [T? combine(T? previousValue, T? element)?]) {
     T? rst;
-    values?.forEach((key, value) {
+    values.forEach((key, value) {
       if (key.isOfScreenScope(MediaQuery.of(context))) {
         if (combine == null) {
           rst = value;
@@ -40,11 +40,11 @@ class Responsive<T> {
 
   dynamic toJson({dynamic encoder(T? element)?}) {
     if (encoder != null) {
-      return values?.map(
+      return values.map(
           (key, value) => MapEntry(json.encode(key.toJson()), encoder(value)));
     } else {
       return values
-          ?.map((key, value) => MapEntry(json.encode(key.toJson()), value));
+          .map((key, value) => MapEntry(json.encode(key.toJson()), value));
     }
   }
 }

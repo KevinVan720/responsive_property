@@ -29,9 +29,9 @@ class ScreenBuilder extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     WidgetBuilder builder = Responsive<WidgetBuilder?>({
-          typicalMobileScreenScope: mobileBuilder,
-          typicalTabletScreenScope: tabletBuilder,
-          typicalDesktopScreenScope: desktopBuilder
+          mobileScreenScope: mobileBuilder,
+          tabletScreenScope: tabletBuilder,
+          desktopScreenScope: desktopBuilder
         }).resolve(context) ??
         desktopBuilder;
     return builder(context);

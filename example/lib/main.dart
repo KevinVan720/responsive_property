@@ -1,5 +1,6 @@
+import 'package:example/responsive_builder.dart';
+import 'package:example/responsive_flex.dart';
 import 'package:example/responsive_int.dart';
-import 'package:example/responsive_page.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -59,6 +60,14 @@ class _MyHomePageState extends State<MyHomePage> {
                                 builder: (context) => ResponsiveIntPage()));
                       },
                       child: Text("Responsive Int")),
+                  ElevatedButton(
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => ResponsiveFlexPage()));
+                      },
+                      child: Text("Responsive Flex")),
                   ElevatedButton(
                       onPressed: () {
                         Navigator.push(
