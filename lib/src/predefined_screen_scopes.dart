@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:responsive_property/responsive_property.dart';
 
+///predefined screen scopes
+///using two breakpoints: mobile - tablet - desktop
+///using one breakpoint: small - big
+
 const double mobileScreenWidthLimit = 480.0;
 const double tabletScreenWidthLimit = 840.0;
 const double desktopScreenWidthLimit = 1200.0;

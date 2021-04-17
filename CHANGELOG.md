@@ -10,3 +10,11 @@ Update README
 ## 0.0.3
 
 Update example
+
+## 0.0.4
+
+Update README
+
+## 0.0.5
+
+Update comments

@@ -3,6 +3,7 @@ import 'package:flutter_class_parser/flutter_class_parser.dart';
 
 const double screenMaxDimension = 999999;
 
+
 class ScreenScope {
   final double minWidth;
   final double maxWidth;

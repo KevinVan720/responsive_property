@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:responsive_property/responsive_property.dart';
 
+///A predefined widget that accepts mobile, tablet and desktop widgets
+
 class ScreenBuilder extends StatelessWidget {
   final WidgetBuilder mobileBuilder;
   final WidgetBuilder tabletBuilder;
