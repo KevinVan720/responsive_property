@@ -22,3 +22,7 @@ Update comments
 ## 0.0.6
 
 Update license.
+
+## 0.0.7
+
+Update dependency.
