@@ -26,3 +26,7 @@ Update license.
 ## 0.0.7
 
 Update dependency.
+
+## 0.0.8
+
+Fix deprecation.

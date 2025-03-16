@@ -3,7 +3,6 @@ import 'package:flutter_class_parser/flutter_class_parser.dart';
 
 const double screenMaxDimension = 999999;
 
-
 class ScreenScope {
   final double minWidth;
   final double maxWidth;
@@ -65,5 +64,5 @@ class ScreenScope {
 
   @override
   int get hashCode =>
-      hashValues(minWidth, maxWidth, minHeight, maxHeight, orientation);
+      Object.hash(minWidth, maxWidth, minHeight, maxHeight, orientation);
 }
