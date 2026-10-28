@@ -29,4 +29,19 @@ Update dependency.
 
 ## 0.0.8
 
-Fix deprecation.
+* Support the latest Flutter stable. Requires Dart 3.6 and Flutter 3.27 or
+  newer.
+* Fix the compile error on Flutter 3.27 and newer, where `hashValues` was
+  removed (fix deprecation).
+* No longer depend on Flutter's Material library, only on the widgets library.
+* Fix `parseScreenScope` and `Responsive.fromJson` crashing when a screen scope
+  in the JSON has missing or null bounds. They now get the `ScreenScope`
+  defaults.
+* Fix `Responsive<double>.fromJson` (without a decoder) rejecting JSON integers
+  like `2`.
+* `ScreenBuilder` constructors take an optional `key`, and
+  `ScreenBuilder.builder` is now `const`.
+* Add `ScreenScope.toString`.
+* Update `flutter_class_parser` to ^0.2.6.
+* Add API documentation, tests and lints, and update the README and example.
+  The JSON format is unchanged.

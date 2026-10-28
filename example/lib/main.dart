@@ -1,83 +1,87 @@
-import 'package:example/responsive_builder.dart';
-import 'package:example/responsive_flex.dart';
-import 'package:example/responsive_int.dart';
 import 'package:flutter/material.dart';
 
+import 'responsive_builder.dart';
+import 'responsive_flex.dart';
+import 'responsive_int.dart';
+
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      title: 'Responsive Property Demo',
+      theme: ThemeData(primarySwatch: Colors.blue),
+      home: const MyHomePage(title: 'Responsive Property'),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key? key, required this.title}) : super(key: key);
+class MyHomePage extends StatelessWidget {
+  const MyHomePage({super.key, required this.title});
 
   final String title;
 
   @override
-  _MyHomePageState createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Responsive Styled Widget"),
-      ),
+      appBar: AppBar(title: Text(title)),
       body: Center(
-          child: Container(
-              width: 300,
-              child: ListView(
-                children: [
-                  Center(
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Text(
-                        "Responsive Examples",
-                        style: TextStyle(
-                            fontSize: 20, fontWeight: FontWeight.bold),
-                      ),
-                    ),
+        child: SizedBox(
+          width: 300,
+          child: ListView(
+            children: [
+              const Center(
+                child: Padding(
+                  padding: EdgeInsets.all(8.0),
+                  child: Text(
+                    'Responsive Examples',
+                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                   ),
-                  ElevatedButton(
-                      onPressed: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => ResponsiveIntPage()));
-                      },
-                      child: Text("Responsive Int")),
-                  ElevatedButton(
-                      onPressed: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => ResponsiveFlexPage()));
-                      },
-                      child: Text("Responsive Flex")),
-                  ElevatedButton(
-                      onPressed: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => ResponsiveBuilderPage()));
-                      },
-                      child: Text("Responsive Builder")),
-                ],
-              ))),
+                ),
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const ResponsiveIntPage(),
+                    ),
+                  );
+                },
+                child: const Text('Responsive Int'),
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const ResponsiveFlexPage(),
+                    ),
+                  );
+                },
+                child: const Text('Responsive Flex'),
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const ResponsiveBuilderPage(),
+                    ),
+                  );
+                },
+                child: const Text('Responsive Builder'),
+              ),
+            ],
+          ),
+        ),
+      ),
     );
   }
 }

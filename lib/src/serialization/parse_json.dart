@@ -1,17 +1,21 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter_class_parser/flutter_class_parser.dart';
-import 'package:responsive_property/responsive_property.dart';
 
+import '../screen_scope.dart';
+
+/// Creates a [ScreenScope] from a JSON map created by [ScreenScope.toJson].
+///
+/// The bounds can be ints or doubles. Missing or null bounds get the defaults
+/// of the [ScreenScope] constructor, and a missing, null or unknown
+/// `orientation` means any orientation.
 ScreenScope parseScreenScope(Map<String, dynamic> map) {
-  double minWidth = map["minWidth"].toDouble() ?? 0;
-  double maxWidth = map["maxWidth"].toDouble() ?? screenMaxDimension;
-  double minHeight = map["minHeight"].toDouble() ?? 0;
-  double maxHeight = map["maxHeight"].toDouble() ?? screenMaxDimension;
-  Orientation? orientation = parseOrientation(map["orientation"]);
   return ScreenScope(
-      minWidth: minWidth,
-      minHeight: minHeight,
-      maxWidth: maxWidth,
-      maxHeight: maxHeight,
-      orientation: orientation);
+    minWidth: _toDouble(map['minWidth']) ?? 0.0,
+    maxWidth: _toDouble(map['maxWidth']) ?? screenMaxDimension,
+    minHeight: _toDouble(map['minHeight']) ?? 0.0,
+    maxHeight: _toDouble(map['maxHeight']) ?? screenMaxDimension,
+    orientation: parseOrientation(map['orientation']),
+  );
 }
+
+/// Reads a JSON number, which can be an int or a double, as a double.
+double? _toDouble(Object? value) => (value as num?)?.toDouble();

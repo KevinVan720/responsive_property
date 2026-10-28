@@ -1,14 +1,14 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:responsive_property/responsive_property.dart';
 
+/// Different layouts for mobile, tablet and desktop screens.
 class ResponsiveBuilderPage extends StatefulWidget {
-  ResponsiveBuilderPage({this.title = "Responsive Builder"});
+  const ResponsiveBuilderPage({super.key, this.title = 'Responsive Builder'});
 
   final String title;
 
   @override
-  _ResponsiveBuilderPageState createState() => _ResponsiveBuilderPageState();
+  State<ResponsiveBuilderPage> createState() => _ResponsiveBuilderPageState();
 }
 
 class _ResponsiveBuilderPageState extends State<ResponsiveBuilderPage> {
@@ -37,17 +37,12 @@ class _ResponsiveBuilderPageState extends State<ResponsiveBuilderPage> {
   }
 
   @override
-  void initState() {
-    super.initState();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
         leading: IconButton(
-          icon: Icon(Icons.arrow_back),
+          icon: const Icon(Icons.arrow_back),
           onPressed: () {
             Navigator.pop(context);
           },
@@ -96,7 +91,10 @@ class _ResponsiveBuilderPageState extends State<ResponsiveBuilderPage> {
       children: _widgetOptions
           .map((e) => Container(
                 alignment: Alignment.center,
-                padding: EdgeInsets.symmetric(vertical: 100, horizontal: 20),
+                padding: const EdgeInsets.symmetric(
+                  vertical: 100,
+                  horizontal: 20,
+                ),
                 child: e,
               ))
           .toList(),
